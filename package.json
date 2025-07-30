@@ -1,0 +1,13 @@
+{
+  "name": "mobile-container",
+  "version": "1.0.0",
+  "description": "Standalone mobile container for previewing local websites.",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "devDependencies": {
+    "electron": "^29.0.0",
+    "electron-reload": "^2.0.0-alpha.1"
+  }
+}
