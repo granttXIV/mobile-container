@@ -1,33 +1,30 @@
-# Node modules
+# Node.js
 node_modules/
-
-# Build output
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 dist/
-build/*.exe
-build/*.dll
-build/*.zip
-
-# Electron builder output
-*.log
-*.map
-*.bak
-*.old
-
-# OS generated files
+out/
+coverage/
 .DS_Store
+
+# Electron
+*.local
+*.lock
+*.asar
+build/*.ico
+
+# OS
 Thumbs.db
+desktop.ini
 
-# VSCode settings
+# IDEs/editors
 .vscode/
-
-# Environment files
-.env
-.env.*
-
-# Misc
-*.tmp
+.idea/
 *.swp
-*.swo
 
-# Ignore installer artifacts
-mobile-con-*-setup.*
+# macOS
+.DS_Store
+
+# Windows
+ehthumbs.db
