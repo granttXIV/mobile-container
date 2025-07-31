@@ -1,6 +1,6 @@
 {
 	"name": "mobile-container",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "Standalone mobile container for previewing local websites.",
 	"main": "main.js",
 	"scripts": {
