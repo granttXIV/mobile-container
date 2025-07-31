@@ -1,182 +1,262 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>Mobile Container</title>
-        <link rel="stylesheet" href="style.css" />
-    </head>
-    <body>
-        <div id="phone-frame">
-            <div class="notch"></div>
-            <div class="theme"></div>
-            <div class="status-bar">
-                <div class="status-left">
-                    <span id="time">9:41</span>
-                </div>
-                <div class="status-right">
-                    <div class="signal">
-                        <svg width="17" height="10" viewBox="0 0 17 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect x="1" y="7" width="2" height="3" rx="1" fill="currentColor" opacity="0.35"/>
-                            <rect x="5" y="4" width="2" height="6" rx="1" fill="currentColor" opacity="0.6"/>
-                            <rect x="9" y="2" width="2" height="8" rx="1" fill="currentColor" opacity="0.8"/>
-                            <rect x="13" y="0" width="2" height="10" rx="1" fill="currentColor"/>
-                        </svg>
-                    </div>
-                    <div class="wifi">
-                        <svg width="15" height="11" viewBox="0 0 15 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M7.5 10.5L7.572 10.58C7.679 10.683 7.821 10.683 7.928 10.58L8 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M4.5 7.5C4.5 7.5 5.5 8.5 7.5 8.5C9.5 8.5 10.5 7.5 10.5 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M1.5 4.5C1.5 4.5 4 7 7.5 7C11 7 13.5 4.5 13.5 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M0.5 1.5C0.5 1.5 3.5 4.5 7.5 4.5C11.5 4.5 14.5 1.5 14.5 1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
-                    <div class="battery">
-                        <svg width="24" height="11" viewBox="0 0 24 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M23 5.5C23 6.32843 22.3284 7 21.5 7C20.6716 7 20 6.32843 20 5.5C20 4.67157 20.6716 4 21.5 4C22.3284 4 23 4.67157 23 5.5Z" fill="currentColor"/>
-                            <path fill-rule="evenodd" clip-rule="evenodd" d="M0.5 3C0.5 1.61929 1.61929 0.5 3 0.5H16C17.3807 0.5 18.5 1.61929 18.5 3V8C18.5 9.38071 17.3807 10.5 16 10.5H3C1.61929 10.5 0.5 9.38071 0.5 8V3ZM3 1.5C2.17157 1.5 1.5 2.17157 1.5 3V8C1.5 8.82843 2.17157 9.5 3 9.5H16C16.8284 9.5 17.5 8.82843 17.5 8V3C17.5 2.17157 16.8284 1.5 16 1.5H3Z" fill="currentColor"/>
-                            <rect id="battery-level" x="2" y="2" width="15" height="7" rx="1" fill="currentColor"/>
-                        </svg>
-                        <span id="battery-percent"></span>
-                    </div>
-                </div>
-            </div>
-      
-            <div class="top-bar">
-                <input
-                    type="text"
-                    id="url-input"
-                    placeholder="Enter URL e.g. http://localhost:3000"
-                />
-                <button id="go-btn">Go</button>
-            </div>
-            <div class="screen">
-                <iframe id="site-frame" src="" sandbox="allow-same-origin allow-scripts"></iframe>
-            </div>
-        </div>
+	<head>
+		<meta charset="UTF-8" />
+		<title>Mobile Container</title>
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		<div id="phone-frame">
+			<div class="notch"></div>
+			<div class="theme"></div>
+			<div class="status-bar">
+				<div class="status-left">
+					<span id="time">9:41</span>
+				</div>
+				<div class="status-right">
+					<div class="signal">
+						<svg
+							width="17"
+							height="10"
+							viewBox="0 0 17 10"
+							fill="none"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<rect
+								x="1"
+								y="7"
+								width="2"
+								height="3"
+								rx="1"
+								fill="currentColor"
+								opacity="0.35"
+							/>
+							<rect
+								x="5"
+								y="4"
+								width="2"
+								height="6"
+								rx="1"
+								fill="currentColor"
+								opacity="0.6"
+							/>
+							<rect
+								x="9"
+								y="2"
+								width="2"
+								height="8"
+								rx="1"
+								fill="currentColor"
+								opacity="0.8"
+							/>
+							<rect
+								x="13"
+								y="0"
+								width="2"
+								height="10"
+								rx="1"
+								fill="currentColor"
+							/>
+						</svg>
+					</div>
+					<div class="battery">
+						<svg
+							width="24"
+							height="11"
+							viewBox="0 0 24 11"
+							fill="none"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<path
+								d="M23 5.5C23 6.32843 22.3284 7 21.5 7C20.6716 7 20 6.32843 20 5.5C20 4.67157 20.6716 4 21.5 4C22.3284 4 23 4.67157 23 5.5Z"
+								fill="currentColor"
+							/>
+							<path
+								fill-rule="evenodd"
+								clip-rule="evenodd"
+								d="M0.5 3C0.5 1.61929 1.61929 0.5 3 0.5H16C17.3807 0.5 18.5 1.61929 18.5 3V8C18.5 9.38071 17.3807 10.5 16 10.5H3C1.61929 10.5 0.5 9.38071 0.5 8V3ZM3 1.5C2.17157 1.5 1.5 2.17157 1.5 3V8C1.5 8.82843 2.17157 9.5 3 9.5H16C16.8284 9.5 17.5 8.82843 17.5 8V3C17.5 2.17157 16.8284 1.5 16 1.5H3Z"
+								fill="currentColor"
+							/>
+							<rect
+								id="battery-level"
+								x="2"
+								y="2"
+								width="15"
+								height="7"
+								rx="1"
+								fill="currentColor"
+							/>
+						</svg>
+						<span id="battery-percent"></span>
+					</div>
+				</div>
+			</div>
 
-        <script>
-            const input = document.getElementById("url-input");
-            const button = document.getElementById("go-btn");
-            const frame = document.getElementById("site-frame");
-      const phoneframe = document.getElementById("phone-frame");
-            const notch = document.querySelector(".notch");
-            const theme = document.querySelector(".theme");
-            const topBar = document.querySelector(".top-bar");
-            const screen = document.querySelector(".screen");
-            const timeEl = document.getElementById("time");
-            const batteryLevelEl = document.getElementById("battery-level");
-            const batteryPercentEl = document.getElementById("battery-percent");
+			<div class="top-bar">
+				<input
+					type="text"
+					id="url-input"
+					placeholder="Enter URL e.g. http://localhost:3000"
+					value="http://localhost:3000"
+				/>
+				<button id="go-btn">Go</button>
+			</div>
+			<div class="screen">
+				<iframe
+					id="site-frame"
+					src=""
+					sandbox="allow-same-origin allow-scripts"
+				></iframe>
+			</div>
+		</div>
 
-            let isHidden = false;
-            let lastScrollTop = 0;
-            const delta = 5; // Small threshold for scroll sensitivity
-            const hideThreshold = 100; // Hide only after scrolling past this
+		<script>
+			const input = document.getElementById("url-input");
+			const button = document.getElementById("go-btn");
+			const frame = document.getElementById("site-frame");
+			const phoneframe = document.getElementById("phone-frame");
+			const notch = document.querySelector(".notch");
+			const theme = document.querySelector(".theme");
+			const topBar = document.querySelector(".top-bar");
+			const screen = document.querySelector(".screen");
+			const timeEl = document.getElementById("time");
+			const batteryLevelEl = document.getElementById("battery-level");
+			// const batteryPercentEl = document.getElementById("battery-percent");
 
-            notch.addEventListener("click", function () {
-                this.classList.toggle("active");
-                theme.classList.toggle("active");
-            });
+			let isHidden = false;
+			let lastScrollTop = 0;
+			const delta = 5; // Small threshold for scroll sensitivity
+			const hideThreshold = 100;
 
-            theme.addEventListener("click", function () {
-                phoneframe.classList.toggle("light-theme");
-            });
+			notch.addEventListener("click", function () {
+				this.classList.toggle("active");
+				theme.classList.toggle("active");
+			});
 
-            button.addEventListener("click", () => {
-                const url = input.value;
-                if (url) {
-                    frame.src = url;
-                }
-            });
+			theme.addEventListener("click", function () {
+				phoneframe.classList.toggle("light-theme");
+			});
 
-            // Update time every minute (iPhone format without AM/PM)
-            function updateTime() {
-                const now = new Date();
-                timeEl.textContent = now.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: false });
-            }
-            updateTime();
-            setInterval(updateTime, 60000);
+			button.addEventListener("click", () => {
+				const url = input.value;
+				if (url) {
+					frame.src = url;
+				}
+			});
 
-            // Get battery info
-            navigator.getBattery().then(battery => {
-                function updateBattery() {
-                    const level = Math.floor(battery.level * 100);
-                    batteryLevelEl.style.width = `${level / 100 * 15}px`; // Scale width (max 15px for fill)
-                    batteryPercentEl.textContent = level < 20 || battery.charging ? `${level}%` : '';
-                    const color = level > 20 ? 'currentColor' : '#ff3b30';
-                    if (battery.charging) {
-                        color = '#30d158';
-                    }
-                    batteryLevelEl.style.fill = color;
-                }
-                updateBattery();
-                battery.addEventListener('levelchange', updateBattery);
-                battery.addEventListener('chargingchange', updateBattery);
-            }).catch(err => {
-                console.warn('Battery API not supported:', err);
-                batteryLevelEl.style.width = '15px'; // Full by default
-            });
+			input.addEventListener("keypress", function (e) {
+				if (e.key === "Enter") {
+					const url = input.value;
+					if (url) {
+						frame.src = url;
+					}
+				}
+			});
 
-            // Setup scroll detection after iframe loads
-            frame.addEventListener('load', () => {
-                try {
-                    const iframeDoc = frame.contentDocument || frame.contentWindow.document;
-                    if (!iframeDoc) {
-                        console.warn('Unable to access iframe document.');
-                        return;
-                    }
+			// Update time every minute (iPhone format without AM/PM)
+			function updateTime() {
+				const now = new Date();
+				timeEl.textContent = now.toLocaleTimeString("en-US", {
+					hour: "numeric",
+					minute: "2-digit",
+					hour12: false,
+				});
+			}
+			updateTime();
+			setInterval(updateTime, 60000);
 
-                    const handleScroll = () => {
-                        const scrollTop = iframeDoc.documentElement.scrollTop || iframeDoc.body.scrollTop;
-                        if (Math.abs(lastScrollTop - scrollTop) <= delta) return;
+			// Get battery info
+			navigator
+				.getBattery()
+				.then((battery) => {
+					function updateBattery() {
+						const level = Math.floor(battery.level * 100);
+						batteryLevelEl.style.width = `${(level / 100) * 15}px`; // Scale width (max 15px for fill)
+						batteryPercentEl.textContent =
+							level < 20 || battery.charging ? `${level}%` : "";
+						const color = level > 20 ? "currentColor" : "#ff3b30";
+						if (battery.charging) {
+							color = "#30d158";
+						}
+						batteryLevelEl.style.fill = color;
+					}
+					updateBattery();
+					battery.addEventListener("levelchange", updateBattery);
+					battery.addEventListener("chargingchange", updateBattery);
+				})
+				.catch((err) => {
+					console.warn("Battery API not supported:", err);
+					batteryLevelEl.style.width = "15px";
+				});
 
-                        if (scrollTop > lastScrollTop && scrollTop > hideThreshold) {
-                            // Scrolling down - hide
-                            if (!isHidden) {
-                                topBar.style.top = '-60px';
-                                screen.style.top = '70px'; // Expand to notch area
-                                isHidden = true;
-                            }
-                        } else {
-                            // Scrolling up - show
-                            if (isHidden) {
-                                topBar.style.top = '70px';
-                                screen.style.top = '130px'; // Reset
-                                isHidden = false;
-                            }
-                        }
-                        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
-                    };
+			// Setup scroll detection after iframe loads
+			frame.addEventListener("load", () => {
+				try {
+					const iframeDoc =
+						frame.contentDocument || frame.contentWindow.document;
+					if (!iframeDoc) {
+						console.warn("Unable to access iframe document.");
+						return;
+					}
 
-                    iframeDoc.addEventListener('scroll', handleScroll);
+					const handleScroll = () => {
+						const scrollTop =
+							iframeDoc.documentElement.scrollTop || iframeDoc.body.scrollTop;
+						if (Math.abs(lastScrollTop - scrollTop) <= delta) return;
 
-                    // Force show if at top
-                    if ((iframeDoc.documentElement.scrollTop || iframeDoc.body.scrollTop) === 0 && isHidden) {
-                        topBar.style.top = '70px';
-                        screen.style.top = '130px';
-                        isHidden = false;
-                    }
-                } catch (e) {
-                    console.error('Error accessing iframe scroll:', e);
-                    // Fallback if still blocked
-                }
-            });
+						if (scrollTop > lastScrollTop && scrollTop > hideThreshold) {
+							// Scrolling down - hide
+							if (!isHidden) {
+								topBar.style.top = "-60px";
+								screen.style.top = "70px"; // Expand to notch area
+								isHidden = true;
+							}
+						} else {
+							// Scrolling up - show
+							if (isHidden) {
+								topBar.style.top = "70px";
+								screen.style.top = "130px"; // Reset
+								isHidden = false;
+							}
+						}
+						lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+					};
 
-            // Hover fallback: Show bar when mouse near top
-            phoneframe.addEventListener('mousemove', (e) => {
-                if (isHidden && e.clientY < 50) {
-                    topBar.style.top = '70px';
-                    screen.style.top = '130px';
-                    isHidden = false;
-                    setTimeout(() => {
-                        const scrollTop = frame.contentDocument?.documentElement.scrollTop || 0;
-                        if (scrollTop > hideThreshold) {
-                            topBar.style.top = '-60px';
-                            screen.style.top = '70px';
-                            isHidden = true;
-                        }
-                    }, 3000);
-                }
-            });
-        </script>
-    </body>
+					iframeDoc.addEventListener("scroll", handleScroll);
+
+					// Force show if at top
+					if (
+						(iframeDoc.documentElement.scrollTop ||
+							iframeDoc.body.scrollTop) === 0 &&
+						isHidden
+					) {
+						topBar.style.top = "70px";
+						screen.style.top = "130px";
+						isHidden = false;
+					}
+				} catch (e) {
+					console.error("Error accessing iframe scroll:", e);
+					// Fallback if still blocked
+				}
+			});
+
+			// Hover fallback: Show bar when mouse near top
+			phoneframe.addEventListener("mousemove", (e) => {
+				if (isHidden && e.clientY < 50) {
+					topBar.style.top = "70px";
+					screen.style.top = "130px";
+					isHidden = false;
+					setTimeout(() => {
+						const scrollTop =
+							frame.contentDocument?.documentElement.scrollTop || 0;
+						if (scrollTop > hideThreshold) {
+							topBar.style.top = "-60px";
+							screen.style.top = "70px";
+							isHidden = true;
+						}
+					}, 3000);
+				}
+			});
+		</script>
+	</body>
 </html>

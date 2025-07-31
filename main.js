@@ -1,34 +1,41 @@
-const { app, BrowserWindow } = require('electron');
-const path = require('path');
+const { app, BrowserWindow, screen } = require("electron");
+const path = require("path");
 
-// Hot-reloading setup (keep if using)
-require('electron-reload')(__dirname, {
-  electron: path.join(__dirname, 'node_modules', '.bin', 'electron')
+// Hot-reloading setup 
+require("electron-reload")(__dirname, {
+	electron: path.join(__dirname, "node_modules", ".bin", "electron"),
 });
 
-// Ignore SSL cert errors (dev-only!)
-app.commandLine.appendSwitch('ignore-certificate-errors');
+app.commandLine.appendSwitch("high-dpi-support", "true");
+app.commandLine.appendSwitch("force-device-scale-factor", "1");
 
-// Disable site isolation to allow iframe contentDocument access (dev-only! Reduces security)
-app.commandLine.appendSwitch('disable-site-isolation-trials');
+app.whenReady().then(() => {
+	const primaryDisplay = screen.getPrimaryDisplay();
+	const { width: screenWidth, height: screenHeight } = primaryDisplay.workAreaSize;
 
-function createWindow () {
-  const win = new BrowserWindow({
-    width: 390,
-    height: 844,
-    frame: false,
-    resizable: true,
-    webPreferences: {
-      preload: path.join(__dirname, 'preload.js'),
-      contextIsolation: true,
-      webSecurity: false  // Required for cross-origin iframe access
-    }
-  });
+	const windowWidth = 450;
+	const windowHeight = 844;
 
-  win.loadFile('index.html');
+	function createWindow() {
+		const win = new BrowserWindow({
+			width: windowWidth,
+			height: windowHeight,
+			x: screenWidth - windowWidth, // Right side
+			y: screenHeight - windowHeight, // Bottom side
+			frame: false,
+			resizable: true,
+			webPreferences: {
+				preload: path.join(__dirname, "preload.js"),
+				contextIsolation: true,
+				webSecurity: false,
+			},
+		});
 
-  // Optional: Open DevTools for debugging
-  win.webContents.openDevTools();
-}
+		win.loadFile("index.html");
+		// win.setAlwaysOnTop(true, "screen-saver");
+		win.setMenuBarVisibility(false);
+	}
 
-app.whenReady().then(createWindow);
+	createWindow();
+});
+

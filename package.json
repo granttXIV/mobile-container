@@ -1,13 +1,41 @@
 {
-  "name": "mobile-container",
-  "version": "1.0.0",
-  "description": "Standalone mobile container for previewing local websites.",
-  "main": "main.js",
-  "scripts": {
-    "start": "electron ."
-  },
-  "devDependencies": {
-    "electron": "^29.0.0",
-    "electron-reload": "^2.0.0-alpha.1"
-  }
+	"name": "mobile-container",
+	"version": "1.0.0",
+	"description": "Standalone mobile container for previewing local websites.",
+	"main": "main.js",
+	"scripts": {
+		"start": "electron .",
+		"clean": "rimraf dist",
+		"dist": "npm run clean && electron-builder"
+	},
+	"devDependencies": {
+		"electron": "^29.0.0",
+		"electron-builder": "^26.0.12",
+		"electron-reload": "^2.0.0-alpha.1",
+		"rimraf": "^6.0.1"
+	},
+	"build": {
+		"appId": "com.grantt.mobile-con",
+		"productName": "mobile-con",
+		"files": [
+			"**/*"
+		],
+		"artifactName": "${productName}-v${version}-setup.${ext}",
+		"win": {
+			"target": "nsis",
+			"icon": "build/icon.ico"
+		}
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/grantt/mobile-container.git"
+	},
+	"keywords": [
+		"electron",
+		"mobile",
+		"container",
+		"preview",
+		"local"
+	],
+	"author": "Grant I. <grantagulue@gmail.com>"
 }
