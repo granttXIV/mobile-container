@@ -5,10 +5,15 @@ const path = require("path");
 
 const isDev = !app.isPackaged;
 if (isDev) {
-	require("electron-reload")(__dirname, {
-		electron: path.join(__dirname, "node_modules", ".bin", "electron"),
-	});
+	try {
+		require("electron-reload")(__dirname, {
+			electron: path.join(__dirname, "node_modules", ".bin", "electron"),
+		});
+	} catch (err) {
+		console.warn("electron-reload failed to load:", err);
+	}
 }
+
 
 app.commandLine.appendSwitch("high-dpi-support", "true");
 app.commandLine.appendSwitch("force-device-scale-factor", "1");
