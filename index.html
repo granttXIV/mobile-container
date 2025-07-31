@@ -12,6 +12,7 @@
 			<div class="status-bar">
 				<div class="status-left">
 					<span id="time">9:41</span>
+					<div class="home-indicator" id="home-indicator"></div>
 				</div>
 				<div class="status-right">
 					<div class="signal">
@@ -111,9 +112,22 @@
 		</div>
 
 		<script>
+			// Home indicator click to animate width
+			document.addEventListener("DOMContentLoaded", function () {
+				const homeIndicator = document.getElementById("home-indicator");
+				if (homeIndicator) {
+					homeIndicator.addEventListener("click", function () {
+						homeIndicator.classList.add("active");
+						setTimeout(() => {
+							homeIndicator.classList.remove("active");
+						}, 350);
+					});
+				}
+			});
 			const input = document.getElementById("url-input");
 			const button = document.getElementById("go-btn");
 			const frame = document.getElementById("site-frame");
+
 			const phoneframe = document.getElementById("phone-frame");
 			const notch = document.querySelector(".notch");
 			const theme = document.querySelector(".theme");
@@ -122,6 +136,11 @@
 			const timeEl = document.getElementById("time");
 			const batteryLevelEl = document.getElementById("battery-level");
 			// const batteryPercentEl = document.getElementById("battery-percent");
+
+			// Start in white theme
+			window.addEventListener("DOMContentLoaded", () => {
+				phoneframe.classList.add("light-theme");
+			});
 
 			let isHidden = false;
 			let lastScrollTop = 0;
@@ -134,7 +153,11 @@
 			});
 
 			theme.addEventListener("click", function () {
-				phoneframe.classList.toggle("light-theme");
+				if (phoneframe.classList.contains("light-theme")) {
+					phoneframe.classList.remove("light-theme"); // Switch to dark
+				} else {
+					phoneframe.classList.add("light-theme"); // Switch to white
+				}
 			});
 
 			button.addEventListener("click", () => {
@@ -171,14 +194,14 @@
 				.then((battery) => {
 					function updateBattery() {
 						const level = Math.floor(battery.level * 100);
-						batteryLevelEl.style.width = `${(level / 100) * 15}px`; // Scale width (max 15px for fill)
+						// batteryLevelEl.style.width = `${(level / 100) * 15}px`; // Scale width (max 15px for fill)
 						batteryPercentEl.textContent =
 							level < 20 || battery.charging ? `${level}%` : "";
 						const color = level > 20 ? "currentColor" : "#ff3b30";
 						if (battery.charging) {
 							color = "#30d158";
 						}
-						batteryLevelEl.style.fill = color;
+						// batteryLevelEl.style.fill = color;
 					}
 					updateBattery();
 					battery.addEventListener("levelchange", updateBattery);
