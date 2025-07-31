@@ -1,17 +1,22 @@
 const { app, BrowserWindow, screen } = require("electron");
 const path = require("path");
 
-// Hot-reloading setup 
-require("electron-reload")(__dirname, {
-	electron: path.join(__dirname, "node_modules", ".bin", "electron"),
-});
+// Hot-reloading setup
+
+const isDev = !app.isPackaged;
+if (isDev) {
+	require("electron-reload")(__dirname, {
+		electron: path.join(__dirname, "node_modules", ".bin", "electron"),
+	});
+}
 
 app.commandLine.appendSwitch("high-dpi-support", "true");
 app.commandLine.appendSwitch("force-device-scale-factor", "1");
 
 app.whenReady().then(() => {
 	const primaryDisplay = screen.getPrimaryDisplay();
-	const { width: screenWidth, height: screenHeight } = primaryDisplay.workAreaSize;
+	const { width: screenWidth, height: screenHeight } =
+		primaryDisplay.workAreaSize;
 
 	const windowWidth = 450;
 	const windowHeight = 844;
@@ -38,4 +43,3 @@ app.whenReady().then(() => {
 
 	createWindow();
 });
-
