@@ -1,0 +1,33 @@
+# Node modules
+node_modules/
+
+# Build output
+dist/
+build/*.exe
+build/*.dll
+build/*.zip
+
+# Electron builder output
+*.log
+*.map
+*.bak
+*.old
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# VSCode settings
+.vscode/
+
+# Environment files
+.env
+.env.*
+
+# Misc
+*.tmp
+*.swp
+*.swo
+
+# Ignore installer artifacts
+mobile-con-*-setup.*
